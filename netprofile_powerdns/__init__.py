@@ -86,10 +86,10 @@ class Module(ModuleBase):
             models.PDNSTemplate
         )
 
-    def get_autoload_js(self, request):
-        return (
-            'NetProfile.view.MultiModelSelect',
-            )
+    # def get_autoload_js(self, request):
+    #    return (
+    #        'NetProfile.view.MultiModelSelect',
+    #        )
 
     # def get_css(self, request):
     # 	return (

@@ -333,7 +333,7 @@ class PDNSTemplate(Base):
 		ForeignKey('pdns_recordtypes.id'),
 		info={
 			'header_string' : _('Record'),
-			'editor_xtype'  : 'multimodelselect'
+			'editor_xtype'  : 'gridfield'
 			}
 		)
 	defaultvalues = Column(
