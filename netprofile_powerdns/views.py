@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8; 
+# -*- coding: utf-8;
 #
 # NetProfile: PowerDNS integration module - Views
 # © Copyright 2013-2017 NetProfile project contributors
@@ -77,7 +77,7 @@ def delete_record(request):
                 'class': 'danger'
                 })
         return HTTPSeeOther(
-            location=request.route_url('pdns.cl.domains'), 
+            location=request.route_url('pdns.cl.domains'),
             _query=(('error', 'asc'),)
         )
     else:
@@ -96,7 +96,7 @@ def delete_record(request):
                 id=int(request.POST.get('recordid', None))
             ).first()
             if record.domain_id in user_domains:
-                sess.delete(record)			
+                sess.delete(record)
                 sess.flush()
 
         return HTTPSeeOther(location=request.route_url('pdns.cl.domains'))
@@ -149,7 +149,7 @@ def edit_record(request):
                     record.prio = None
     sess.flush()
     return HTTPSeeOther(location=request.route_url(
-        'pdns.cl.domains', 
+        'pdns.cl.domains',
         _query=(('sort', 'asc'),))
     )
 
@@ -209,7 +209,7 @@ def create_record(request):
                     location=request.route_url('pdns.cl.domains')
                 )
             currentvalues['domainip'] = domainip
-            
+
             # get the nameservers from the config
             ns1 = cfg.get('netprofile.client.pdns.ns1')
             ns2 = cfg.get('netprofile.client.pdns.ns2')
@@ -229,7 +229,7 @@ def create_record(request):
             service_template = sess.query(PDNSTemplateType).filter(
                 PDNSTemplateType.name == rectype
             ).join(PDNSTemplate).all()
-            
+
             # default values are stored as JSON in the database
             # if default value is a key of a dictionnary, lookup it's value in the currentvalues dict
             # else it is a complex value with prefix and value from currentvalues dict, as in jabber contents field
@@ -243,7 +243,7 @@ def create_record(request):
                     newname = currentvalues['name']
                     if 'prefix' in defvalues.keys():
                         newname = "{0}.{1}".format(
-                            defvalues['prefix'], 
+                            defvalues['prefix'],
                             newname
                         )
                     newrtype = f.field.name
@@ -313,9 +313,9 @@ def create_record(request):
                 )
 
             newdomain = PDNSDomain(
-                name=hostname, 
-                master='', 
-                dtype=hosttype, 
+                name=hostname,
+                master='',
+                dtype=hosttype,
                 account=request.POST.get('user', None)
                 )
             sess.add(newdomain)
@@ -351,7 +351,7 @@ def list_domains(request):
             return HTTPSeeOther(location=request.route_url('pdns.cl.domains'))
     # Get all the templates with associated fields
     templates = sess.query(PDNSTemplateType).join(PDNSTemplate).all()
-    
+
     access_user = sess.query(AccessEntity).filter_by(
         nick=str(request.user)
     ).first()
