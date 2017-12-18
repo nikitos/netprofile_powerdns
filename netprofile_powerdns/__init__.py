@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-# -*- coding: utf-8; tab-width: 4; indent-tabs-mode: t -*-
+# -*- coding: utf-8;
 #
 # NetProfile: Proxmox module
-# © Copyright 2013 Alex 'Unik' Unigovsky
+# © Copyright 2013-2017 NetProfile project contributors
 #
 # This file is part of NetProfile.
 # NetProfile is free software: you can redistribute it and/or
@@ -21,10 +21,10 @@
 # <http://www.gnu.org/licenses/>.
 
 from __future__ import (
-	unicode_literals,
-	print_function,
-	absolute_import,
-	division
+    unicode_literals,
+    print_function,
+    absolute_import,
+    division
 )
 
 from netprofile.common.modules import ModuleBase
@@ -34,69 +34,68 @@ from pyramid.i18n import TranslationStringFactory
 
 _ = TranslationStringFactory('netprofile_proxmox')
 
+
 class Module(ModuleBase):
-	def __init__(self, mmgr):
-		self.mmgr = mmgr
-		mmgr.cfg.add_route(
-			'pdns.cl.domains',
-			'/pdns',
-			vhost='client'
-		)
-		mmgr.cfg.add_route(
-			'pdns.cl.delete',
-			'/pdns/delete',
-			vhost='client'
-		)
+    def __init__(self, mmgr):
+        self.mmgr = mmgr
+        mmgr.cfg.add_route(
+            'pdns.cl.domains',
+            '/pdns',
+            vhost='client'
+        )
+        mmgr.cfg.add_route(
+            'pdns.cl.delete',
+            '/pdns/delete',
+            vhost='client'
+        )
 
-		mmgr.cfg.add_route(
-			'pdns.cl.create',
-			'/pdns/create',
-			vhost='client'
-		)
+        mmgr.cfg.add_route(
+            'pdns.cl.create',
+            '/pdns/create',
+            vhost='client'
+        )
 
-		mmgr.cfg.add_route(
-			'pdns.cl.edit',
-			'/pdns/edit',
-			vhost='client'
-		)
+        mmgr.cfg.add_route(
+            'pdns.cl.edit',
+            '/pdns/edit',
+            vhost='client'
+        )
 
-		mmgr.cfg.add_translation_dirs('netprofile_powerdns:locale/')
-		mmgr.cfg.scan()
-		
+        mmgr.cfg.add_translation_dirs('netprofile_powerdns:locale/')
+        mmgr.cfg.scan()
 
-	@classmethod
-	def get_deps(cls):
-		return ('entities', 'domains')
+    @classmethod
+    def get_deps(cls):
+        return ('access')
 
-	@classmethod
-	def get_models(self):
-		from netprofile_powerdns import models 
-		return (
-			#models.UserDomain,
-			models.PDNSComment,
-			models.PDNSCryptokey,
-			models.PDNSDomainMetadata,
-			models.PDNSDomain,
-			models.PDNSRecord,
-			models.PDNSSupermaster,
-			models.PDNSTsigkey,
-			#models.PDNSDomainType,
-			models.PDNSFieldType,
-			models.PDNSTemplateType,
-			models.PDNSTemplate
-		)
+    @classmethod
+    def get_models(self):
+        from netprofile_powerdns import models
+        return (
+            # models.UserDomain,
+            models.PDNSComment,
+            models.PDNSCryptokey,
+            models.PDNSDomainMetadata,
+            models.PDNSDomain,
+            models.PDNSRecord,
+            models.PDNSSupermaster,
+            models.PDNSTsigkey,
+            # models.PDNSDomainType,
+            models.PDNSFieldType,
+            models.PDNSTemplateType,
+            models.PDNSTemplate
+        )
 
-	def get_autoload_js(self, request):
-		return (
-			'NetProfile.view.MultiModelSelect',
-			)
+    def get_autoload_js(self, request):
+        return (
+            'NetProfile.view.MultiModelSelect',
+            )
 
-	#def get_css(self, request):
-	#	return (
-	#		'netprofile_powerdns:static/css/main.css',
-	#		)
+    # def get_css(self, request):
+    # 	return (
+    # 		'netprofile_powerdns:static/css/main.css',
+    # 		)
 
-	@property
-	def name(self):
-		return _('PowerDNS Service')
-	
+    @property
+    def name(self):
+        return _('PowerDNS Service')
