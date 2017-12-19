@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-# -*- coding: utf-8; tab-width: 4; indent-tabs-mode: t -*-
+# -*- coding: utf-8;
 #
 # NetProfile: PowerDNS module - Models
-# © Copyright 2013 Alex 'Unik' Unigovsky
+# © Copyright 2013-2017 NetProfile project contributors
 #
 # This file is part of NetProfile.
 # NetProfile is free software: you can redistribute it and/or
