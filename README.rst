@@ -6,7 +6,7 @@ Getting Started
 
 - cd <directory containing this file>
 
-- $venv/bin/pip -e ./
+- $venv/bin/pip install -e ./
 
 - add config options to client section of ini file:
 
