@@ -53,15 +53,16 @@
 	</div>
 	<div id="collapse${d.id}" class="panel-collapse collapse">
 	  <div class="panel-body">
-
+        <ul class="list-group">
 	    ## Domain Records
 	    % if d.id in [r.domain_id for r in domainrecords]:
 	      % for r in domainrecords:
       		% if r.domain_id == d.id:
-		  ${r} 
-		  <a data-toggle='modal' href='#modalRecordEdit${r.id}'><span class="glyphicon glyphicon-pencil"></a> 
-		  <a data-toggle='modal' href='#modalDeleteRecord${r.id}'><span class="glyphicon glyphicon-trash"></a> 
-		  <br>
+          <li class="list-group-item">
+		    ${r} 
+		    <a data-toggle='modal' href='#modalRecordEdit${r.id}'><span class="glyphicon glyphicon-pencil"></a> 
+		    <a data-toggle='modal' href='#modalDeleteRecord${r.id}'><span class="glyphicon glyphicon-trash"></a> 
+          </li>
 
 		  ## Domain record deletion form start
 		  <div class="modal fade" id="modalDeleteRecord${r.id}" tabindex="-1" role="dialog" aria-labelledby="modalDeleteRecordLabel" aria-hidden="true">
@@ -156,7 +157,7 @@
 	    % else:
       	      There's no records for this domain yet. <a data-toggle="modal" data-target="#formModalDomainRecord${d.id}"><span class="glyphicon glyphicon-plus-sign">Add one?</a>
 	    % endif  		
-
+        </ul>
       </div>
 	</div>
       </div>
