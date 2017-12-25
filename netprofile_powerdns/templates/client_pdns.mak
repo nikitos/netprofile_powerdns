@@ -44,15 +44,19 @@
 	<div class="panel-heading">
 	  <div class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapse${d.id}">
-	    <span class="glyphicon glyphicon-th-list"></span> <strong>${d}</strong></a> 
-	    <a data-toggle="modal" data-target="#formModalDomainRecord${d.id}"><span class="glyphicon glyphicon-plus-sign"></span></a>
-	    <a data-toggle='modal' href='#modalEdit${d.id}'><span class="glyphicon glyphicon-pencil"</a> 
-	    <a data-toggle='modal' href='#modalDeleteDomain${d.id}'><span class="glyphicon glyphicon-trash"></a> 
-	    <br>
+	    <span class="glyphicon glyphicon-th-list"></span> <strong>${d}</strong></a>
 	  </div>
+      <span class="badge">
+	    <a data-toggle="modal" data-target="#formModalDomainRecord${d.id}"><span class="glyphicon glyphicon-plus-sign"></span></a>
+      </span>
+      <span class="badge">
+	    <a data-toggle='modal' href='#modalEdit${d.id}'><span class="glyphicon glyphicon-pencil"></span></a>
+      </span>
+      <span class="badge">
+	    <a data-toggle='modal' href='#modalDeleteDomain${d.id}'><span class="glyphicon glyphicon-trash"></span></a> 
+      </span>
 	</div>
 	<div id="collapse${d.id}" class="panel-collapse collapse">
-	  <div class="panel-body">
         <ul class="list-group">
 	    ## Domain Records
 	    % if d.id in [r.domain_id for r in domainrecords]:
@@ -60,8 +64,12 @@
       		% if r.domain_id == d.id:
           <li class="list-group-item">
 		    ${r} 
-		    <a data-toggle='modal' href='#modalRecordEdit${r.id}'><span class="glyphicon glyphicon-pencil"></a> 
-		    <a data-toggle='modal' href='#modalDeleteRecord${r.id}'><span class="glyphicon glyphicon-trash"></a> 
+            <span class="badge">
+		      <a data-toggle='modal' href='#modalRecordEdit${r.id}'><span class="glyphicon glyphicon-pencil"></span></a>
+            </span> 
+            <span class="badge">
+		      <a data-toggle='modal' href='#modalDeleteRecord${r.id}'><span class="glyphicon glyphicon-trash"></span></a> 
+            </span>
           </li>
 
 		  ## Domain record deletion form start
@@ -153,12 +161,13 @@
 		  
 		% endif
 	      % endfor
+            <div class="panel-footer">
               <a data-toggle="modal" data-target="#formModalDomainRecord${d.id}"><span class="glyphicon glyphicon-plus-sign">Add new record</a>
+            </div>
 	    % else:
       	      There's no records for this domain yet. <a data-toggle="modal" data-target="#formModalDomainRecord${d.id}"><span class="glyphicon glyphicon-plus-sign">Add one?</a>
 	    % endif  		
         </ul>
-      </div>
 	</div>
       </div>
       
