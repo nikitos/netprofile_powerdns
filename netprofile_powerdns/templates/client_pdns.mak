@@ -45,16 +45,16 @@
 	  <div class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapse${d.id}">
 	    <span class="glyphicon glyphicon-th-list"></span> <strong>${d}</strong></a>
-	  </div>
-      <span class="badge">
+      <span class="badge pull-right">
 	    <a data-toggle="modal" data-target="#formModalDomainRecord${d.id}"><span class="glyphicon glyphicon-plus-sign"></span></a>
       </span>
-      <span class="badge">
+      <span class="badge pull-right">
 	    <a data-toggle='modal' href='#modalEdit${d.id}'><span class="glyphicon glyphicon-pencil"></span></a>
       </span>
-      <span class="badge">
+      <span class="badge pull-right">
 	    <a data-toggle='modal' href='#modalDeleteDomain${d.id}'><span class="glyphicon glyphicon-trash"></span></a> 
       </span>
+	  </div>
 	</div>
 	<div id="collapse${d.id}" class="panel-collapse collapse">
         <ul class="list-group">
